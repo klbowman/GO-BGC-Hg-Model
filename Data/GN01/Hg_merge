@@ -1,0 +1,44 @@
+CREATE TABLE HgD(
+	Station_ID INT,
+	Start_Latitude FLOAT,
+	Start_Longitude FLOAT,
+	Sample_Depth FLOAT,
+	Hg0_pM FLOAT,
+	HgT_pM FLOAT,
+	DMHg_pM FLOAT,
+	MMHg_pM FLOAT
+);
+
+CREATE TABLE HgP(
+	Station_ID INT,
+	Start_Latitude FLOAT,
+	Start_Longitude FLOAT,
+	Sample_ID FLOAT,
+	Sample_Depth FLOAT,
+	HgP_pmol_ug FLOAT,
+	MMHgP_pmol_ug FLOAT
+);
+
+
+SELECT *
+FROM HgD JOIN HgP ON HgD.Station_ID = HgP.Station_ID
+	AND HgD.Sample_Depth >= HgP.Sample_Depth -5 
+	AND HgD.Sample_Depth <= HgP.Sample_Depth +5;
+	
+CREATE TABLE HgDP(
+	Station_ID INT,
+	Start_Latitude FLOAT,
+	Start_Longitude FLOAT,
+	Sample_Depth FLOAT,
+	Hg0_pM FLOAT,
+	HgT_pM FLOAT,
+	DMHg_pM FLOAT,
+	MMHg_pM FLOAT,
+	HgP_pmol_ug FLOAT,
+	MMHgP_pmol_ug FLOAT
+);
+	
+SELECT *
+FROM HgDP JOIN HgPOC ON HgDP.Station_ID = HgPOC.Station_ID
+	AND HgDP.Sample_Depth >= HgPOC.Sample_Depth -5 
+	AND HgDP.Sample_Depth <= HgPOC.Sample_Depth +5;
