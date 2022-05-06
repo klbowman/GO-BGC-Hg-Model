@@ -42,3 +42,43 @@ SELECT *
 FROM HgDP JOIN HgPOC ON HgDP.Station_ID = HgPOC.Station_ID
 	AND HgDP.Sample_Depth >= HgPOC.Sample_Depth -5 
 	AND HgDP.Sample_Depth <= HgPOC.Sample_Depth +5;
+	
+CREATE TABLE HgDPOC(
+	Station_ID INT,
+	Start_Latitude FLOAT,
+	Start_Longitude FLOAT,
+	Sample_Depth FLOAT,
+	Hg0_pM FLOAT,
+	HgT_pM FLOAT,
+	DMHg_pM FLOAT,
+	MMHg_pM FLOAT,
+	HgP_pmol_ug FLOAT,
+	MMHgP_pmol_ug FLOAT,
+	POC_umol_kg FLOAT
+);
+
+CREATE TABLE GN01_D(
+	Num INT,
+	Station_ID INT,
+	Sample_Depth FLOAT,
+	Start_Latitude FLOAT,
+	Start_Longitude FLOAT,
+	Hg0_pM FLOAT,
+	HgT_pM FLOAT,
+	DMHg_pM FLOAT,
+	MMHg_pM FLOAT,
+	TRANSM FLOAT,
+	FLUORM FLOAT,
+	CTDPRS FLOAT,
+	CTDTMP FLOAT,
+	CTDSAL FLOAT,
+	CTDOXY FLOAT,
+	SILCAT FLOAT,
+	NITRAT FLOAT,
+	PHSPHT FLOAT
+);
+
+SELECT *
+FROM HgDPOC JOIN GN01_D ON HgDPOC.Station_ID = GN01_D.Station_ID
+	AND HgDPOC.Sample_Depth >= GN01_D.Sample_Depth -5 
+	AND HgDPOC.Sample_Depth <= GN01_D.Sample_Depth +5;
