@@ -1,41 +1,39 @@
-CREATE TABLE GT10_11_HgP(
-	Year INT,
-	station_GEOTRC INT,
-	depth_n INT,
+CREATE TABLE GP16_HgP(
+	STNNBR INT,
 	lat FLOAT,
 	lon FLOAT,
+	depth INT,
 	HgP_pmol_ug FLOAT,
 	HgP_flag FLOAT,
 	MMHgP_pmol_ug FLOAT,
 	MMHgP_flag FLOAT,
-	POC_ugram_L FLOAT,
+	POC_umolC_L FLOAT,
 	POC_sink_flag FLOAT,
 	POC_susp_flag FLOAT
 );
 
-CREATE TABLE GT10_11_HgD_cleaned(
-	Year INT,
-	Station_ID INT,
-	Sample_Depth FLOAT,
+CREATE TABLE GP16_cleaned(
+	STNNBR INT,
+	depth FLOAT,
 	lat FLOAT,
 	long FLOAT,
-	Hg_total FLOAT,
-	Hg0 FLOAT,
-	MMHg_fM FLOAT,
-	DMHg_fM FLOAT,
+	HgT_pM FLOAT,
+	Hg0_pM FLOAT,
+	MMHg_pM FLOAT,
+	DMHg_pM FLOAT,
+	SILCAT FLOAT,
+	NITRAT FLOAT,
+	NITRIT FLOAT,
+	PHSPHT FLOAT,
 	CTDPRS FLOAT,
 	CTDTMP FLOAT,
 	CTDSAL FLOAT,
 	CTDOXY FLOAT,
 	TRANSM FLOAT,
-	FLUORM FLOAT,
-	SILCAT FLOAT,
-	NITRAT FLOAT,
-	NITRIT FLOAT,
-	PHSPHT FLOAT
+	FLUORM FLOAT
 ); 
 
 SELECT *
-FROM GT10_11_HgP JOIN GT10_11_HgD_cleaned ON GT10_11_HgP.station_GEOTRC = GT10_11_HgD_cleaned.Station_ID
-	AND GT10_11_HgP.depth_n >= GT10_11_HgD_cleaned.Sample_Depth -5 
-	AND GT10_11_HgP.depth_n <= GT10_11_HgD_cleaned.Sample_Depth +5;
+FROM GP16_HgP JOIN GP16_cleaned ON GP16_HgP.STNNBR = GP16_cleaned.STNNBR
+	AND GP16_cleaned.depth >= GP16_HgP.depth -5 
+	AND GP16_cleaned.depth <= GP16_HgP.depth +5;
