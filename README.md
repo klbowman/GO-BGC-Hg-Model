@@ -4,7 +4,7 @@ Supervised machine learning and neural network models to predict monomethylmercu
 
 ## Description
 
-This repository is designed to model oceanographic data with the goal of predicting dissolved methylmercury concentrations. Data were downloaded from [BCO-DMO](https://www.bco-dmo.org/) as CSV files and merged (bottle, profile, and mercury datasets) in Jupyter Notebook. Supervised machine learning models (Linear Regression and k-nearest neighbors) and neural network model were unsuccessful (accuray scores < 0.1) in predicting dissolved methylmercury concentrations given input data (temperature, salinity, dissolved oxygen, nitrate) available from the [Global Ocean Biogeochemical Array](https://www.go-bgc.org/floats). 
+This repository is designed to model oceanographic data with the goal of predicting dissolved methylmercury concentrations. Data were downloaded from [BCO-DMO](https://www.bco-dmo.org/) as CSV files and merged (bottle, profile, and mercury datasets) in Jupyter Notebook. Supervised machine learning models (Linear Regression and k-nearest neighbors) and neural network model were unsuccessful (accuray scores < 0.1) in predicting dissolved methylmercury concentrations in the upper 2,000 meters of the water column given input data (temperature, salinity, dissolved oxygen, nitrate) available from the [Global Ocean Biogeochemical Array](https://www.go-bgc.org/floats). 
 
 ## Getting Started
 
